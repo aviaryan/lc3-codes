@@ -1,0 +1,24 @@
+.ORIG x3000
+
+AND R1,R1,#0
+ADD R1,R1,x7 ; INPUT - DO FACTORIAL OF 7, STORE IT IN R2
+
+AND R2,R2,#0 ; result store
+ADD R2,R2,#1
+
+DECR
+	AND R3,R3,#0
+	ADD R3,R3,R1 ; r3=r1
+	AND R4,R4,#0
+
+	MULT
+		ADD R4,R4,R2
+		ADD R3,R3,#-1
+		BRp MULT
+
+	AND R2,R2,#0
+	ADD R2,R2,R4 ; r2=r4
+	ADD R1,R1,#-1
+	BRp DECR
+
+.END
